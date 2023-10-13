@@ -16,10 +16,18 @@ class MainActivity : AppCompatActivity() {
         val welcomeMSG = findViewById<TextView>(R.id.welcomeMSG)
         val seekBar = findViewById<SeekBar>(R.id.seekBar)
         val result = findViewById<TextView>(R.id.result)
+        val roll = findViewById<Button>(R.id.rollButton)
+        val rollDescription = findViewById<TextView>(R.id.randomTextDescription)
 
-        startButton.setOnClickListener{
-            val rand = Random().nextInt(seekBar.progress)+1
-            result.text = rand.toString()
+        roll.setOnClickListener{
+            var seekBarStatus = seekBar.progress
+            if (seekBarStatus != 0) {
+                val rand = Random().nextInt(seekBarStatus) + 1
+                result.text = rand.toString()
+            }
+            else {
+                result.text = "Error Can't set to zero"
+            }
         }
     }
 }
