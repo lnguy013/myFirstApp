@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import java.util.*
+import com.example.myapplication.Home
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,16 +20,28 @@ class MainActivity : AppCompatActivity() {
         val result = findViewById<TextView>(R.id.result)
         val roll = findViewById<Button>(R.id.rollButton)
         val rollDescription = findViewById<TextView>(R.id.randomTextDescription)
-
+//        val zeroError: String = getString(R.string.zero_error)
+//        val oneError: String = getString(R.string.one_error)
+//        roll button function
         roll.setOnClickListener{
             var seekBarStatus = seekBar.progress
-            if (seekBarStatus != 0) {
-                val rand = Random().nextInt(seekBarStatus) + 1
-                result.text = rand.toString()
+            try{
+                if (seekBarStatus != 1) {
+                    val rand = Random().nextInt(seekBarStatus) + 1
+                    result.text = rand.toString()
+                }
+                else {
+                    result.text = getString(R.string.one_error)
+                }
             }
-            else {
-                result.text = "Error Can't set to zero"
+            catch(e: Exception) {
+                result.text = getString(R.string.zero_error)
             }
+        }
+
+        //start button open new page
+        startButton.setOnClickListener{
+
         }
     }
 }

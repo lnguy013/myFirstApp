@@ -5,7 +5,8 @@
     <string name="welcome_msg">Welcome to your first application</string>
     <string name="random_page_description">Adjust the slider to change the range of random number can be generated.</string>
     <string name="title_activity_home">Home</string>
-    <string name="zero_error">Cannot randomize Zero Value</string>
+    <string name="zero_error">0e Error, choose value higher than 1</string>
+    <string name="one_error">1e Error, choose value higher than 1</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
