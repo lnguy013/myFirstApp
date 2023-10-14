@@ -1,12 +1,12 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import java.util.*
-import com.example.myapplication.Home
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         //start button open new page
         startButton.setOnClickListener{
-
+            val intent = Intent(this@MainActivity, mortageActivity::class.java)
+            startActivity(intent)
         }
     }
 }
