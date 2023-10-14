@@ -1,0 +1,32 @@
+Mortgage Calculator Spec
+
+User’s Inputs 
+
+purchasePrice = will only take in float value up to 2 decimals. Will not allow String
+
+percentDown = will only take float value up to 2 decimals. Will not allow String
+*Default to 20%*
+*calculate  resultDown = (percentDown/100)* purchasePrice
+
+loanTerm = will take in int value (year)
+//Todo will allow user to select from a drop down box between years and month
+*Default to 30years
+
+interestRate = will only take float value up to 2 decimals. Will not allow String
+//Todo will have a default value taken from an api for current national average. 
+
+CTA button
+
+Calculate = click button 
+*Validate if purchasePrice is not 0 and not blank
+*Shows inline error asking to input value
+
+Results
+
+monthlyPayment = out float 2 decimal
+
+totalInterest = out float 2 decimal
+
+//todo shows line item interest and principle payment for the term of the loan table
+//scroll able table
+
