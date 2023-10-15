@@ -15,16 +15,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val startButton = findViewById<Button>(R.id.startButton)
-        val welcomeMSG = findViewById<TextView>(R.id.welcomeMSG)
+//        val welcomeMSG = findViewById<TextView>(R.id.welcomeMSG)
         val seekBar = findViewById<SeekBar>(R.id.seekBar)
         val result = findViewById<TextView>(R.id.result)
         val roll = findViewById<Button>(R.id.rollButton)
-        val rollDescription = findViewById<TextView>(R.id.randomTextDescription)
+//        val rollDescription = findViewById<TextView>(R.id.randomTextDescription)
 //        val zeroError: String = getString(R.string.zero_error)
 //        val oneError: String = getString(R.string.one_error)
 //        roll button function
         roll.setOnClickListener{
-            var seekBarStatus = seekBar.progress
+            val seekBarStatus = seekBar.progress
             try{
                 if (seekBarStatus != 1) {
                     val rand = Random().nextInt(seekBarStatus) + 1
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         //start button open new page
         startButton.setOnClickListener{
-            val intent = Intent(this@MainActivity, mortageActivity::class.java)
+            val intent = Intent(this@MainActivity, MortgageActivity::class.java)
             startActivity(intent)
         }
     }

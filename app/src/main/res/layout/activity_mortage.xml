@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/resultTotalInterest"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00BCD4"
@@ -215,7 +214,7 @@
         app:layout_constraintTop_toBottomOf="@+id/monthlyPayment" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/resultTotalInterest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -233,8 +232,8 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Button"
+        android:text="@string/mortgage_calculator_button"
         app:layout_constraintBottom_toTopOf="@+id/signOut"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
+        app:layout_constraintTop_toBottomOf="@+id/resultTotalInterest"
         tools:layout_editor_absoluteX="60dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
