@@ -84,6 +84,7 @@
         android:backgroundTint="#000900"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="@string/mortgage_default_down"
         app:layout_constraintBottom_toTopOf="@+id/inputInterestRate"
         app:layout_constraintEnd_toStartOf="@+id/inputDownPayment"
         app:layout_constraintStart_toEndOf="@+id/percentDown"
@@ -126,6 +127,7 @@
         android:backgroundTint="#000000"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="@string/mortgage_default_interest"
         app:layout_constraintBottom_toTopOf="@+id/inputLoanTerm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/interestRate"
@@ -153,6 +155,7 @@
         android:backgroundTint="#000000"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="@string/mortgage_default_term"
         app:layout_constraintEnd_toStartOf="@+id/switch1"
         app:layout_constraintStart_toEndOf="@+id/loanTerm"
         app:layout_constraintTop_toBottomOf="@+id/inputInterestRate" />

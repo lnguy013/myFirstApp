@@ -22,6 +22,9 @@
     <string name="mortgage_monthly_payment_label">Monthly Payment</string>
     <string name="mortgage_total_interest_label">Total Interest</string>
     <string name="mortgage_calculator_button">Calculate</string>
+    <string name="mortgage_default_interest">5</string>
+    <string name="mortgage_default_down">20</string>
+    <string name="mortgage_default_term">30</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
