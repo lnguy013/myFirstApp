@@ -9,10 +9,19 @@
     <string name="one_error">1e Error, choose value higher than 1</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Random Number Generator</string>
-    <string name="second_fragment_label">Mortage Calculator</string>
+    <string name="second_fragment_label">Mortgage Calculator</string>
     <string name="signOut">Sign Out</string>
     <string name="previous">Previous</string>
 
+    <!-- Strings used for Mortgage Calculator page-->
+    <string name="mortgage_title">Mortgage Calculator</string>
+    <string name="mortgage_home_price_label">Home Price</string>
+    <string name="mortgage_percent_down_label">Percent down</string>
+    <string name="mortgage_interest_amount_label">Interest</string>
+    <string name="mortgage_loan_term_label">Terms of Loan</string>
+    <string name="mortgage_monthly_payment_label">Monthly Payment</string>
+    <string name="mortgage_total_interest_label">Total Interest</string>
+    <string name="mortgage_calculator_button">Calculate</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
