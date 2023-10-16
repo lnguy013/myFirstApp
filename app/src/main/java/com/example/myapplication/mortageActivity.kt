@@ -40,9 +40,11 @@ class MortgageActivity : AppCompatActivity() {
                 val interestValue: Double = inputInterestRate.text.toString().toDouble()
                 val termLoanValue: Double = inputTermsOfLoan.text.toString().toDouble()
 
-                val monthPaymentValue = (mortgageCalculate(interestValue,termLoanValue,amount,purchasePrice)*100.0).roundToInt()/100.0
+                val monthPaymentValue = (calculateMortgage(interestValue,termLoanValue,amount,purchasePrice)*100.0).roundToInt()/100.0
+                val totalLoanInterest =  (calculateInterest(interestValue,termLoanValue,amount,purchasePrice)*100.0).roundToInt()/100.0
 
                 resultMonthlyPayment.setText(monthPaymentValue.toString())
+                resultInterest.setText(totalLoanInterest.toString())
                }
                catch(errorMsg: Exception){
                    inputHomeValue.setText("Error Please Don't leave this empty")
@@ -50,17 +52,17 @@ class MortgageActivity : AppCompatActivity() {
         }
     }
 
-    private fun mortgageCalculate(
+    private fun calculateMortgage(
         interestRate: Double,
         termsOfLoan: Double,
         downPaymentValue: Double,
-        homePriceValue: Double
+        loanValue: Double
     ): Double {
 
 //        this function will calculate the monthly payment for the loan
 //        Return value to the loan in Double up to 2 decimals place
 //        round up
-        val loanAmount = (homePriceValue - downPaymentValue)
+        val loanAmount = (loanValue - downPaymentValue)
         val convertTermsToMonths = (termsOfLoan * 12)
         val annualInterestMod = ((interestRate/100) / 12)
         val exponentialValue = (1 +annualInterestMod).pow(convertTermsToMonths)
@@ -69,5 +71,27 @@ class MortgageActivity : AppCompatActivity() {
 
         return (loanAmount / factor)
 
+    }
+
+    private fun calculateInterest (
+        interestRate: Double,
+        termsOfLoan: Double,
+        downPaymentValue: Double,
+        loanValue: Double):
+            Double {
+        val loanLength =  (termsOfLoan * 12).toInt()
+        var totalInterest = 0.00
+        val loanAmount = (loanValue - downPaymentValue)
+        val annualInterestMod = ((interestRate/100) / 12)
+        var loanAmountTemp = loanAmount
+        val fixMonthlyPayment = calculateMortgage(interestRate,termsOfLoan,downPaymentValue,loanValue)
+        var monthlyInterest : Double
+        for (x in 1..loanLength ){
+            monthlyInterest = loanAmountTemp*annualInterestMod
+            totalInterest = (totalInterest+monthlyInterest)
+            loanAmountTemp=(loanAmountTemp-(fixMonthlyPayment-monthlyInterest))
+        }
+
+        return totalInterest
     }
 }
