@@ -15,7 +15,7 @@
 
     <!-- Strings used for Mortgage Calculator page-->
     <string name="mortgage_title">Mortgage Calculator</string>
-    <string name="mortgage_home_price_label">Home Price</string>
+    <string name="mortgage_home_price_label">Original Loan</string>
     <string name="mortgage_percent_down_label">Percent down</string>
     <string name="mortgage_interest_amount_label">Interest</string>
     <string name="mortgage_loan_term_label">Terms of Loan</string>

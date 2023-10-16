@@ -31,29 +31,22 @@ class MortgageActivity : AppCompatActivity() {
         }
 
         calculateButton.setOnClickListener{
+            try {
+                val purchasePrice: Double = inputHomeValue.text.toString().toDouble()
+                val percentDown: Double = inputPercentDown.text.toString().toDouble()
+                val amount = (((percentDown)/(100))*purchasePrice)
+                inputDownPayment.setText(amount.toString())
 
-           if(inputHomeValue.text.trim().isNotEmpty() || inputHomeValue.text.trim().isNotBlank()){
-               if(inputHomeValue.text.trim().isDigitsOnly()){
+                val interestValue: Double = inputInterestRate.text.toString().toDouble()
+                val termLoanValue: Double = inputTermsOfLoan.text.toString().toDouble()
 
-                   val purchasePrice: Double = inputHomeValue.text.toString().toDouble()
-                   val percentDown: Double = inputPercentDown.text.toString().toDouble()
-                   val amount = (((percentDown)/(100))*purchasePrice)
-                   inputDownPayment.setText(amount.toString())
+                val monthPaymentValue = (mortgageCalculate(interestValue,termLoanValue,amount,purchasePrice)*100.0).roundToInt()/100.0
 
-                   val interestValue: Double = inputInterestRate.text.toString().toDouble()
-                   val termLoanValue: Double = inputTermsOfLoan.text.toString().toDouble()
-
-                   val monthPaymentValue = (mortgageCalculate(interestValue,termLoanValue,amount,purchasePrice)*100.0).roundToInt()/100.0
-
-                   resultMonthlyPayment.setText(monthPaymentValue.toString())
-               }else{
+                resultMonthlyPayment.setText(monthPaymentValue.toString())
+               }
+               catch(errorMsg: Exception){
                    inputHomeValue.setText("Error Please Don't leave this empty")
                }
-           }else{
-                inputHomeValue.setText("Please Don't leave this empty")
-           }
-
-
         }
     }
 
@@ -70,10 +63,9 @@ class MortgageActivity : AppCompatActivity() {
         val loanAmount = (homePriceValue - downPaymentValue)
         val convertTermsToMonths = (termsOfLoan * 12)
         val annualInterestMod = ((interestRate/100) / 12)
+        val exponentialValue = (1 +annualInterestMod).pow(convertTermsToMonths)
         val factor =
-            ((((1 + annualInterestMod).pow(convertTermsToMonths)) - 1) / ((annualInterestMod) * ((1 + annualInterestMod).pow(
-                convertTermsToMonths
-            ))))
+            (exponentialValue- 1) / (annualInterestMod * exponentialValue)
 
         return (loanAmount / factor)
 
