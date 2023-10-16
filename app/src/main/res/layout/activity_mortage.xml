@@ -4,13 +4,237 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00BCD4"
+    android:backgroundTint="#2196F3"
+    android:foregroundTint="#3F51B5"
     tools:context=".mortageActivity">
 
     <Button
         android:id="@+id/signOut"
+        android:layout_width="106dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/signOut"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="289dp" />
+
+    <TextView
+        android:id="@+id/mortageHeader"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/mortgage_title"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#030F57"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/signOut"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="576dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/mortgage_home_price_label"
+        app:layout_constraintEnd_toStartOf="@+id/inputHomePrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mortageHeader" />
+
+    <TextView
+        android:id="@+id/percentDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/mortgage_percent_down_label"
+        app:layout_constraintEnd_toStartOf="@+id/inputPercentDown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homePrice" />
+
+    <EditText
+        android:id="@+id/inputHomePrice"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homePrice"
+        app:layout_constraintTop_toBottomOf="@+id/mortageHeader" />
+
+    <EditText
+        android:id="@+id/inputPercentDown"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#000900"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="@string/mortgage_default_down"
+        app:layout_constraintBottom_toTopOf="@+id/inputInterestRate"
+        app:layout_constraintEnd_toStartOf="@+id/inputDownPayment"
+        app:layout_constraintStart_toEndOf="@+id/percentDown"
+        app:layout_constraintTop_toBottomOf="@+id/inputHomePrice" />
+
+    <EditText
+        android:id="@+id/inputDownPayment"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/inputPercentDown"
+        app:layout_constraintTop_toBottomOf="@+id/inputHomePrice" />
+
+    <TextView
+        android:id="@+id/interestRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/mortgage_interest_amount_label"
+        app:layout_constraintEnd_toStartOf="@+id/inputInterestRate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/percentDown" />
+
+    <EditText
+        android:id="@+id/inputInterestRate"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="@string/mortgage_default_interest"
+        app:layout_constraintBottom_toTopOf="@+id/inputLoanTerm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/interestRate"
+        app:layout_constraintTop_toBottomOf="@+id/inputDownPayment" />
+
+    <TextView
+        android:id="@+id/loanTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/mortgage_loan_term_label"
+        app:layout_constraintEnd_toStartOf="@+id/inputLoanTerm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/interestRate" />
+
+    <EditText
+        android:id="@+id/inputLoanTerm"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="71dp"
+        android:backgroundTint="#000000"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="@string/mortgage_default_term"
+        app:layout_constraintEnd_toStartOf="@+id/switch1"
+        app:layout_constraintStart_toEndOf="@+id/loanTerm"
+        app:layout_constraintTop_toBottomOf="@+id/inputInterestRate" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="74dp"
+        android:text="Switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/inputLoanTerm"
+        app:layout_constraintTop_toBottomOf="@+id/inputInterestRate" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/inputLoanTerm"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <TextView
+        android:id="@+id/monthlyPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/mortgage_monthly_payment_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <EditText
+        android:id="@+id/resultMontlyPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/monthlyPayment"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/totalInterest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="74dp"
+        android:text="@string/mortgage_total_interest_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthlyPayment" />
+
+    <EditText
+        android:id="@+id/resultTotalInterest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/totalInterest"
+        app:layout_constraintTop_toBottomOf="@+id/resultMontlyPayment" />
+
+    <Button
+        android:id="@+id/calculateBttn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/mortgage_calculator_button"
+        app:layout_constraintBottom_toTopOf="@+id/signOut"
+        app:layout_constraintTop_toBottomOf="@+id/resultTotalInterest"
+        tools:layout_editor_absoluteX="60dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
