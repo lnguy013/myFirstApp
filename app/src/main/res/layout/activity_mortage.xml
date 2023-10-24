@@ -13,10 +13,13 @@
         android:id="@+id/signOut"
         android:layout_width="106dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/signOut"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="289dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mortgageNextButton" />
 
     <TextView
         android:id="@+id/mortageHeader"
@@ -232,9 +235,27 @@
         android:id="@+id/calculateBttn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="60dp"
         android:text="@string/mortgage_calculator_button"
         app:layout_constraintBottom_toTopOf="@+id/signOut"
-        app:layout_constraintTop_toBottomOf="@+id/resultTotalInterest"
-        tools:layout_editor_absoluteX="60dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultTotalInterest" />
+
+    <Button
+        android:id="@+id/mortgageNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/mortgage_table_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signOut"
+        app:layout_constraintHorizontal_bias="0.345"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculateBttn"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
