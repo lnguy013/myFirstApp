@@ -16,6 +16,8 @@ import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.myapplication.databinding.ActivityTableBinding
 import com.google.android.material.snackbar.Snackbar
 import java.lang.String
+import java.security.Principal
+import kotlin.math.roundToInt
 
 class table : AppCompatActivity() {
     private var mAppBarConfiguration: AppBarConfiguration? = null
@@ -45,9 +47,28 @@ class table : AppCompatActivity() {
     }
 
     fun drawTable(){
-        val prices = findViewById(R.id.tableMonthly) as TableLayout
-        prices.isStretchAllColumns = true
-        prices.bringToFront()
+        val priceBreakDown = findViewById(R.id.tableMonthly) as TableLayout
+        val tableHeader = findViewById(R.id.tableHeader) as TableLayout
+
+        priceBreakDown.isStretchAllColumns = true
+        priceBreakDown.bringToFront()
+        tableHeader.isStretchAllColumns = true
+        tableHeader.bringToFront()
+        val hr = TableRow(this)
+        val h1 = TextView(this)
+        h1.setText("Month")
+        val h2 = TextView(this)
+        h2.setText("Balance")
+        val h3 = TextView(this)
+        h3.setText("Interest")
+        val h4 = TextView(this)
+        h4.setText("Principal")
+        hr.addView(h1)
+        hr.addView(h2)
+        hr.addView(h3)
+        hr.addView(h4)
+        tableHeader.addView(hr)
+
         val defaultValue= 0.00
 //        val termOfLoan = intent?.getDoubleExtra("terms_of_loan",defaultValue)
 //        val intent = activity?.intent
@@ -56,20 +77,55 @@ class table : AppCompatActivity() {
         val interestRate = intent?.getDoubleExtra("interest_rate",defaultValue)
         val termOfLoan = intent?.getDoubleExtra("terms_of_loan",defaultValue)
         val loanValue = intent?.getDoubleExtra("loan_value",defaultValue)
+        var balanceValue = loanValue
+        var interestValue = 0.00
+        var principalValue = 0.00
         val loanLength = (termOfLoan?.times(12))?.toInt()
-        for (i in 1 ..loanLength!!+1) {
+        for (i in 1 ..loanLength!!) {
             val tr = TableRow(this)
-            val c1 = TextView(this)
-            c1.setText(i.toString())
-            val c2 = TextView(this)
-            c2.setText(loanValue.toString())
-            val c3 = TextView(this)
-            c3.setText(monthlyPayment.toString())
-            tr.addView(c1)
-            tr.addView(c2)
-            tr.addView(c3)
-            prices.addView(tr)
+            val monthly = TextView(this)
+            val principal = TextView(this)
+            val interest = TextView(this)
+            val balance = TextView(this)
+
+            //get interest
+            if (interestRate != null) {
+                interestValue = (((interestRate/1200)* balanceValue!!)*100.0).roundToInt()/100.0
+            }
+
+            //get principal
+            if (interestRate != null) {
+                if (monthlyPayment != null) {
+                    principalValue = ((monthlyPayment-interestValue)*100.0).roundToInt()/100.0
+                }
+            }
+
+            //get monthly Balance
+            if(i >1 ){
+                if (monthlyPayment != null) {
+                    if (balanceValue != null) {
+                        balance.setText(balanceValue.toString())
+                        balanceValue = getMonthlyBalance(balanceValue,principalValue)
+                    }
+                }
+            }else{
+                balance.setText(balanceValue.toString())
+                balanceValue = balanceValue?.let { getMonthlyBalance(it,principalValue) }
+            }
+            monthly.setText(i.toString())
+            //balance.setText(balanceValue.toString())
+            principal.setText(principalValue.toString())
+            interest.setText(interestValue.toString())
+            tr.addView(monthly)
+            tr.addView(balance)
+            tr.addView(interest)
+            tr.addView(principal)
+            priceBreakDown.addView(tr)
         }
+    }
+
+    fun getMonthlyBalance(loanValue: Double, principalValue:  Double):Double{
+        return ((loanValue-principalValue)*100.0).roundToInt()/100.0
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -60,10 +60,10 @@ class MortgageActivity : AppCompatActivity() {
                 resultInterest.setText(totalLoanInterest.toString())
 
 
-                intentGoToTable.putExtra("monthly_payment", resultMonthlyPayment.text.toString().toDouble())
+                intentGoToTable.putExtra("monthly_payment", monthPaymentValue)
                 intentGoToTable.putExtra("terms_of_loan", inputTermsOfLoan.text.toString().toDouble())
                 intentGoToTable.putExtra("interest_rate",inputInterestRate.text.toString().toDouble())
-                intentGoToTable.putExtra("loan_value",amount)
+                intentGoToTable.putExtra("loan_value",purchasePrice-amount)
                 intentGoToTable.putExtra("total_interest",resultInterest.text.toString().toDouble())
 
 
