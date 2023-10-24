@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.isDigitsOnly
+import com.example.myapplication.ui.home.HomeFragment
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
@@ -24,10 +24,23 @@ class MortgageActivity : AppCompatActivity() {
         val resultInterest = findViewById<EditText>(R.id.resultTotalInterest)
         val inputDownPayment = findViewById<EditText>(R.id.inputDownPayment)
         val resultMonthlyPayment = findViewById<EditText>(R.id.resultMontlyPayment)
+        val nextButton = findViewById<Button>(R.id.mortgageNextButton)
+        val intentGoToTable = Intent(this@MortgageActivity, table::class.java)
 
         signButton.setOnClickListener{
             val intent = Intent(this@MortgageActivity, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        nextButton.setOnClickListener{
+            try {
+
+                startActivity(intentGoToTable)
+            }
+            catch(errorMsg: Exception){
+                inputHomeValue.setText("Error Please Don't leave this empty")
+            }
+
         }
 
         calculateButton.setOnClickListener{
@@ -45,10 +58,18 @@ class MortgageActivity : AppCompatActivity() {
 
                 resultMonthlyPayment.setText(monthPaymentValue.toString())
                 resultInterest.setText(totalLoanInterest.toString())
-               }
-               catch(errorMsg: Exception){
-                   inputHomeValue.setText("Error Please Don't leave this empty")
-               }
+
+
+                intentGoToTable.putExtra("monthly_payment", resultMonthlyPayment.text.toString().toDouble())
+                intentGoToTable.putExtra("terms_of_loan", inputTermsOfLoan.text.toString().toDouble())
+                intentGoToTable.putExtra("interest_rate",inputInterestRate.text.toString().toDouble())
+                intentGoToTable.putExtra("loan_value",inputHomeValue.text.toString().toDouble())
+                intentGoToTable.putExtra("total_interest",resultInterest.text.toString().toDouble())
+
+            }
+            catch(errorMsg: Exception){
+                inputHomeValue.setText("Error Please Don't leave this empty")
+            }
         }
     }
 
