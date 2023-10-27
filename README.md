@@ -9,6 +9,11 @@ Stage 1 - get result to show monthly payment without Tax and insurance - Oct 14 
 Stage 2 - show table with monthly payment with principle and interest shown
         Completed stage 2 Oct 24 2023
 
+
+https://github.com/lnguy013/myFirstApp/assets/42395239/88ead266-fa7d-48af-a103-485a0cbe8704
+
+
+
 Stage 3 - Polish UX - Get drawable
 
 Stage 4 - learn to pull api data for national average 
